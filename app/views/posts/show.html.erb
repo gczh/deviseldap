@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1>Post Info</h1>
 
 <p>
   <strong>User:</strong>
@@ -20,5 +20,5 @@
   <%= @post.restricted %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Edit', edit_post_path(@post) if can?(:edit, @post) %>
 <%= link_to 'Back', posts_path %>

@@ -4,7 +4,18 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user).reverse_chronological_order.references(:user)
+    case params[:list]
+    when 'me'
+      @posts = @posts.created_by(current_user.id)
+      # Alternatively, you can also use
+      # @posts = @posts.accessible_by(current_ability, :edit).where("posts.user_id = ?", current_user.id)
+      # but that is too long
+    when 'with_friends'
+      @posts = @posts.with_collaborators
+    else
+      @posts = @posts.accessible_by(current_ability, :index)
+    end
   end
 
   # GET /posts/1
@@ -14,7 +25,6 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-
     @post = Post.new
   end
 
