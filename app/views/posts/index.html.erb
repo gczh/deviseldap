@@ -1,12 +1,12 @@
 <h1>Listing posts</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>User</th>
       <th>Title</th>
+      <th>User</th>
       <th>Content</th>
-      <th>Restricted</th>
+      <!-- <th>Restricted</th> -->
       <th></th>
       <th></th>
       <th></th>
@@ -18,10 +18,10 @@
       @posts.each do |post| 
     %>
       <tr>
-        <td><%= post.user.email %></td>
         <td><%= link_to post.title, post %></td>
+        <td><%= post.user.email %></td>
         <td><%= post.content %></td>
-        <td><%= post.restricted %></td>
+        <!-- <td><%= post.restricted %></td> -->
         <td><%= link_to('Edit', edit_post_path(post)) if can?(:edit, post) %></td>
         <td>
           <%= link_to('Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }) if can?(:destroy, post)  %>
@@ -34,6 +34,6 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+</a><%= button_to 'New Post', new_post_path, :class=>"btn btn-primary", :method=>:get %>
 
 <br>

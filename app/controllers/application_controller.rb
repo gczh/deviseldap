@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
       format.html do
         if current_user.nil? # user is unauthorized because he/she is not logged in
           session[:next] = request.fullpath
-          redirect_to new_user_session_path, :alert => "Please log in to continue."
+          redirect_to new_user_session_path, :flash => { :info => "Please log in to continue." }
         else
           if request.env["HTTP_REFERER"].present?
-            redirect_to :back, :alert => exception.message
+            redirect_to :back, :flash => { :info => exception.message }
           else
             render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
           end
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
       format.json do
         # Show authorization error using JSON format
-        render json: { status: 403, message: "You are not allowed to access this resource." } , status: :forbidden
+        render json: { status: 403, message: exception.message } , status: :forbidden
       end
     end
   end

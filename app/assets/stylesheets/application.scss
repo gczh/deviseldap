@@ -12,14 +12,9 @@
  *= require_tree .
  */
 
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-family-base: 'Source Sans Pro', sans-serif;
+$font-size-base: 15px;
+$headings-font-weight: 600;
 
-#header {
-	height: 50px;
-	width: 100%;
-	font-size: 16px;
-}
-
-#menu {
-	margin: 15px 0;
-	float: right;
-}
+@import "bootstrap";
