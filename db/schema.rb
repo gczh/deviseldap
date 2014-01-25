@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122121359) do
+ActiveRecord::Schema.define(version: 20140125205000) do
 
   create_table "collaborations", force: true do |t|
     t.integer  "user_id"
@@ -34,6 +34,24 @@ ActiveRecord::Schema.define(version: 20140122121359) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -53,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140122121359) do
     t.string   "confirmation_token"
     t.string   "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "username"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
