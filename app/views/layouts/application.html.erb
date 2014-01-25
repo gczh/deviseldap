@@ -3,12 +3,37 @@
 
 <head>
 	<title>Quantum Inventions</title>
-	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "application", media: "all" %>
 	<%= csrf_meta_tags %>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style>
 
+  .account-form {
+  	border-radius: 2px;
+  	padding: 0 20px 20px;
+  	overflow: hidden;
+  	margin-top: 25px;
+  }
+
+  .account-form h1 {
+  	font-weight: 500;
+  	text-align: center;
+  	font-size: 28px;
+  	border-bottom: 1px solid #eee;
+  	margin: 0 -20px;
+  	padding: 30px 0;
+  	margin-bottom: 20px;
+  	color: #1f84d9;
+  	line-height: 1;
+  }
+
+  .account-extras {
+  	text-align: center;
+  	margin-bottom:45px;
+  }
+  </style>
 </head>
 
 <body style="">
@@ -78,7 +103,7 @@
     </div> <!-- /container -->
 
     <!-- load javascript last here -->
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application" %>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300italic' rel='stylesheet' type='text/css'>
 
   </body>

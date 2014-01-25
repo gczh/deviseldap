@@ -1,0 +1,39 @@
+<%= devise_error_messages! %>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="account-form thumbnail">
+			<h1>
+				Change your password
+			</h1>
+
+			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :class => "form-vertical", :html => { :method => :post }) do |f| %>
+
+				<%= f.hidden_field :reset_password_token %>
+
+				<div class="form-group">
+					<%= f.label :password, "Confirm new password" %>
+					<%= f.password_field :password, :autofocus => true, :class => "form-control", :placeholder => "New password" %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :password_confirmation, "Confirm new password" %>
+					<%= f.password_field :password_confirmation, :autofocus => true, :class => "form-control", :placeholder => "Confirm password" %>
+				</div>
+
+				<hr>
+
+				<div class="form-group">
+					<div class="controls">
+						<div><%= f.submit "Change my password", :class=>"btn btn-primary pull-right" %></div>
+						<% end %>
+					</div>
+				</div>
+
+		</div>
+
+		<div class="account-extras">
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+</div>
