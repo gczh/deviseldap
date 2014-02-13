@@ -41,6 +41,10 @@ gem 'devise'
 # For user AUTHORIZATION
 gem 'cancan', '~>1.6.0'
 
+# omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
